@@ -78,36 +78,36 @@ namespace math {
     };
 
     Matrix operator+(const Matrix& A, const Matrix& B) {
-        if (A rows_ != B rows_ || A cols_ != B cols_) {
+        if (A.rows_ != B.rows_ || A.cols_ != B.cols_) {
             return Matrix();
         }
-        Matrix result(A rows_, A cols_);
-        for (int i = 0; i < A rows_ * A cols_; ++i) {
-            result mvec_[i] = A mvec_[i] + B mvec_[i];
+        Matrix result(A.rows_, A.cols_);
+        for (int i = 0; i < A.rows_ * A.cols_; ++i) {
+            result.mvec_[i] = A.mvec_[i] + B.mvec_[i];
         }
         return result;
     }
 
     Matrix operator-(const Matrix& A, const Matrix& B) {
-        if (A rows_ != B rows_ || A cols_ != B cols_) {
+        if (A.rows_ != B.rows_ || A.cols_ != B.cols_) {
             return Matrix();
         }
-        Matrix result(A rows_, A cols_);
-        for (int i = 0; i < A rows_ * A cols_; ++i) {
-            result mvec_[i] = A mvec_[i] - B mvec_[i];
+        Matrix result(A.rows_, A.cols_);
+        for (int i = 0; i < A.rows_ * A.cols_; ++i) {
+            result.mvec_[i] = A.mvec_[i] - B.mvec_[i];
         }
         return result;
     }
 
     Matrix operator*(const Matrix& A, const Matrix& B) {
-        if (A cols_ != B rows_) {
+        if (A.cols_ != B.rows_) {
             return Matrix();
         }
-        Matrix result(A rows_, B cols_);
-        for (int i = 0; i < A rows_; ++i) {
-            for (int j = 0; j < B cols_; ++j) {
+        Matrix result(A.rows_, B.cols_);
+        for (int i = 0; i < A.rows_; ++i) {
+            for (int j = 0; j < B.cols_; ++j) {
                 real sum = 0;
-                for (int k = 0; k < A cols_; ++k) {
+                for (int k = 0; k < A.cols_; ++k) {
                     sum += A(i, k) * B(k, j);
                 }
                 result(i, j) = sum;
