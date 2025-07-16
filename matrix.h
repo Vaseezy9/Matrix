@@ -64,10 +64,10 @@ namespace math {
             }
 
             friend std::istream& operator>>(std::iostream& is, Matrix& matrix) {
-                for (int i = 0; i < matrix rows_ * matrix cols_; ++i) {
+                for (int i = 0; i < matrix.rows_ * matrix.cols_; ++i) {
                     real value;
                     is >> value;
-                    matrix mvec_[i] = value;
+                    matrix.mvec_[i] = value;
                 }
                 return is;
             }
